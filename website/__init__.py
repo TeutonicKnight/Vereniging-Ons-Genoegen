@@ -10,8 +10,10 @@ app.config.from_object(Config)
 # initialize db
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
+login_manager.login_message = 'U moet ingelogd zijn om deze pagina te bezoeken'
 login_manager.login_message_category = 'info'
 
 from website import routes

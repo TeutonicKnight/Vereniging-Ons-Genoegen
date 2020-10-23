@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+{% block title %}Inloggen{% endblock %}
 
 {% block content %}
     
@@ -7,7 +7,7 @@
 </nav>
 
     <div class="container">
-    <h1>Register page</h1>
+    <h1>Inloggen</h1>
     <br/>
     
     
@@ -17,7 +17,7 @@
   	<form method="POST" action ="">
   		{{ form.hidden_tag() }}
   		<fieldset class="form-group">
-  			<legend class="border-bottom mb-4">Log In</legend>
+  			<legend class="border-bottom mb-4">Log in met uw wachtwoord en email</legend>
   			
   			<div class="form-group">
   				{{ form.email.label(class="form-control-label")}}
@@ -61,14 +61,14 @@
   		</div>
 
       <small class="text-muted ml-2">
-          <a href="#">Forgot password?</a>
+          <a href="#">Wachtwoord vergeten? Klik hier.</a>
         
       </small>
   	</form>
   </div>
   <div class="border-top pt-3">
   		<small class="text-muted">
-  			Need an account? <a class="ml-2" href="{{ url_for('register') }}"> Sign Up Now </a>
+  			Heeft u nog geen account? <a class="ml-2" href="{{ url_for('register') }}"> Registreer hier</a>
   		</small>
   </div>
 

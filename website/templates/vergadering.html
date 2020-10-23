@@ -1,15 +1,65 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Vergadering{% endblock %}
 
 {% block content %}
     
-  </div>
-</nav>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/table.css">
+    <style>
+      .container {
+        max-width: 1000px;
+      }
+    </style>
+  </head>
+  <div id="wrap">
+	        <table class="content-table table_on_the_left">
+	  <thead>
+	    <tr>
+	      <th>Niet aanwezig</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for user in Leden.query.all()%}
+	    	{% if user.aanwezig == False %}
+		      <tr>
+		        <td>{{ user.voornaam + ' ' + user.achternaam }}</td>
+		      </tr>
+	      	{% endif %}
+	    {% endfor %}
+	  </tbody>
+	</table>
 
-    <div class="container">
-    <h1>Vergadering pagina</h1>
-    <br/>
-    
-    </div>
+
+	        <table class="content-table table_on_the_right">
+	  <thead>
+	    <tr>
+	      <th>Aanwezig</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for user in Leden.query.all()%}
+	    	{% if user.aanwezig == True %}
+		      <tr>
+		        <td>{{ user.voornaam + ' ' + user.achternaam }}</td>
+		      </tr>
+	      	{% endif %}
+	    {% endfor %}
+	  </tbody>
+	</table>
+</div>
+ <!-- 
+<div>
+<form action="/vergadering" method="POST">
+		{% if current_user.aanwezig == False %}
+    	<input type="submit" name="aanmelden" value="aanmelden" class='btn btn-secondary'>
+    	{% else %}
+    	<input type="submit" name="afmelden" value="afmelden" class='btn btn-secondary'>
+    	{% endif %}
+    </form>
+</div>
+-->
+</html>
 
 {% endblock %} 

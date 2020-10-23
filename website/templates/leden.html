@@ -1,15 +1,32 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
-
+{% block title %}Leden pagina{% endblock %}
 {% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/table.css">
+    <link rel="stylesheet" type="text/css" href="/static/center.css">
+    <style>
+      .container {
+        max-width: 1000px;
+      }
+    </style>
+  </head>
     
-  </div>
-</nav>
-
-    <div class="container">
-    <h1>Leden pagina</h1>
-    <br/>
-    
-    </div>
-
+        <table class="content-table center">
+  <thead>
+    <tr>
+      <th>Ledenlijst</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in Leden.query.all()%}
+      <tr>
+        <td>{{ user.voornaam + ' ' + user.achternaam }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</html>
 {% endblock %} 

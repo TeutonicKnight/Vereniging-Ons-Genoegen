@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Uw account{% endblock %}
 
 {% block content %}
     
-  </div>
-</nav>
-
-    <div class="container">
-    <h1>{{ current_user.username }}</h1>
-    <br/>
+  <div class="content-section">
+  <div class="media">
     
-    
+    <div class="media-body">
+      <h2 class="account-heading">{{ current_user.voornaam }}</h2>
+      <p class="text-secondary">{{ current_user.email }}</p>
     </div>
+  </div>
+  <form method="POST">
+    	<input type="submit" name="Account verwijderen" value="Account verwijderen" class='btn btn-secondary'>
+    </form>
+</div>
 
 {% endblock %}

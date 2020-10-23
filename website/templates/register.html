@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Register{% endblock %}
+{% block title %}Registreren{% endblock %}
 
 {% block content %}
     
@@ -7,7 +7,7 @@
 </nav>
 
     <div class="container">
-    <h1>Register page</h1>
+    <h1>Registreren</h1>
     <br/>
     
     
@@ -17,19 +17,34 @@
   	<form method="POST" action ="">
   		{{ form.hidden_tag() }}
   		<fieldset class="form-group">
-  			<legend class="border-bottom mb-4">Join today</legend>
+  			<legend class="border-bottom mb-4">Vul uw informatie in</legend>
   			<div class="form-group">
-  				{{ form.username.label(class="form-control-label")}}
+  				{{ form.voornaam.label(class="form-control-label")}}
 
-  				{% if form.username.errors %}
-  					{{ form.username(class="form-control form-control-lg is-invalid")}}
+  				{% if form.voornaam.errors %}
+  					{{ form.voornaam(class="form-control form-control-lg is-invalid")}}
   					<div class="invalid-feedback">
-  						{% for error in form.username.errors %}
+  						{% for error in form.voornaam.errors %}
   							<span>{{ error }}</span>
   						{% endfor %}
   					</div>
   				{% else %}
-  					{{ form.username(class="form-control form-control-lg")}}
+  					{{ form.voornaam(class="form-control form-control-lg")}}
+  				{% endif %}
+  				
+  			</div>
+  			<div class="form-group">
+  				{{ form.achternaam.label(class="form-control-label")}}
+
+  				{% if form.achternaam.errors %}
+  					{{ form.achternaam(class="form-control form-control-lg is-invalid")}}
+  					<div class="invalid-feedback">
+  						{% for error in form.achternaam.errors %}
+  							<span>{{ error }}</span>
+  						{% endfor %}
+  					</div>
+  				{% else %}
+  					{{ form.achternaam(class="form-control form-control-lg")}}
   				{% endif %}
   				
   			</div>
@@ -86,7 +101,7 @@
   </div>
   <div class="border-top pt-3">
   		<small class="text-muted">
-  			Already have an account? <a class="ml-2" href="{{ url_for('login') }}"> Sign In </a>
+  			Heeft u al een account? <a class="ml-2" href="{{ url_for('login') }}">Inloggen</a>
   		</small>
   </div>
 

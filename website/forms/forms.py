@@ -4,32 +4,29 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
 from website.models.models import Leden
 
 class RegistrationForm(FlaskForm):
-	username = StringField('Username', 
-					validators=[DataRequired(), Length(min=2, max=20)])
+	voornaam = StringField('Voornaam', 
+					validators=[DataRequired(), Length(min=2, max=30)])
+	achternaam = StringField('Achternaam', 
+					validators=[DataRequired(), Length(min=2, max=30)])
 	email = StringField('Email',
 		validators=[DataRequired(), Email()]) 	
-	password = PasswordField('Password', 
+	password = PasswordField('Wachtwoord', 
 		validators=[DataRequired()])
-	confirm_password = PasswordField('Confirm Password',
+	confirm_password = PasswordField('Wachtwoord bevestigen',
 		validators=[DataRequired(), EqualTo('password')])
-	submit = SubmitField('Sign Up')
-
-	def validate_username(self, username):
-		user = Leden.query.filter_by(username=username.data).first()
-		if user:
-			raise ValidationError('That username is taken, please choose another')
+	submit = SubmitField('Registreer')
 
 	def validate_email(self, email):
 		user = Leden.query.filter_by(email=email.data).first()
 		if user:
-			raise ValidationError('That email is taken, please choose another')
+			raise ValidationError('De email die u heeft ingevoerd is al in gebruik. Kies een andere email.')
 
 class LoginForm(FlaskForm):
 	email = StringField('Email',
 		validators=[DataRequired(), Email()]) 	
-	password = PasswordField('Password', 
+	password = PasswordField('Wachtwoord', 
 		validators=[DataRequired()])
-	remember = BooleanField('Remember me')
-	submit = SubmitField('Login')
+	remember = BooleanField('Mij onthouden')
+	submit = SubmitField('Inloggen')
 
 
