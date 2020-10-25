@@ -44,5 +44,12 @@ To query from your db model: SomeModel.query.all(). Use Model.SomeAttribute to a
 
 Never run your website in debug mode when you are running it for production. The debug mode gives away too much
 info when it catches an error. If someone has the Debug pin he could figure out emails and such.
+
+Procfile syntax: 
+web: gunicorn app:app The first app represents the name of the python file that runs your application or the 
+name of the module it is in. The second app represents the app name that is named in your .py file. 
+Just wanted to add because it helps clarify the contents of the procfile and it's syntax. E.g. your 
+appname would be my_awesome_app in the following code: if __name__ == '__main__': my_awesome_app.run() 
+https://stackoverflow.com/questions/38851564/heroku-gunicorn-procfile
  
 Flask-login extension documentation: https://flask-login.readthedocs.io/en/latest/
