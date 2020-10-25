@@ -1,4 +1,9 @@
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+
 # Set as environment variables if you need info to be secret!
+
 
 class Config:
 	# Three /// creates a realative path alongside the module, so will place inside same folder
