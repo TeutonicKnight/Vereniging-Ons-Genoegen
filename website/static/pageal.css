@@ -1,0 +1,25 @@
+#pageal {
+    /* ... put any margin, padding, etc. here you like */
+}
+
+#pageal div.video {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    width: 440px;
+    height: 330px;
+    margin: 0 10px 10px 0;
+}
+
+#pageal div.video video {
+    width: 100%;
+    height: 100%;
+}
+
+#pageal div.table {
+    display: inline-block;
+    *display: inline;
+    width: 200px;
+    height: 280px;
+    margin: 0 10px 10px 0;
+}

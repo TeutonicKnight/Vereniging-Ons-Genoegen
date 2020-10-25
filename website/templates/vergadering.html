@@ -7,59 +7,87 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="/static/table.css">
+    <link rel="stylesheet" type="text/css" href="/static/center.css">
+    <link rel="stylesheet" type="text/css" href="/static/pageal.css">
     <style>
       .container {
         max-width: 1000px;
       }
     </style>
   </head>
-  <div id="wrap">
-	        <table class="content-table table_on_the_left">
-	  <thead>
-	    <tr>
-	      <th>Niet aanwezig</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    {% for user in Leden.query.all()%}
-	    	{% if user.aanwezig == False %}
-		      <tr>
-		        <td>{{ user.voornaam + ' ' + user.achternaam }}</td>
-		      </tr>
-	      	{% endif %}
-	    {% endfor %}
-	  </tbody>
-	</table>
+
+ <br/>
+{% if current_user.aanwezig == True %}
+    <div class="container" align="center">
+    <h3>De heer Voorzitter zal spoedig de vergadering openen, gaat u zitten.</h3>
+    <br/>
+{% else %}
+	<div class="container" align="center">
+    <h3>Klink op 'aanmelden' om de vergadering bij te wonen.</h3>
+    <br/>
+{% endif %}
 
 
-	        <table class="content-table table_on_the_right">
-	  <thead>
-	    <tr>
-	      <th>Aanwezig</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    {% for user in Leden.query.all()%}
-	    	{% if user.aanwezig == True %}
-		      <tr>
-		        <td>{{ user.voornaam + ' ' + user.achternaam }}</td>
-		      </tr>
-	      	{% endif %}
-	    {% endfor %}
-	  </tbody>
-	</table>
-</div>
- <!-- 
-<div>
 <form action="/vergadering" method="POST">
 		{% if current_user.aanwezig == False %}
     	<input type="submit" name="aanmelden" value="aanmelden" class='btn btn-secondary'>
     	{% else %}
     	<input type="submit" name="afmelden" value="afmelden" class='btn btn-secondary'>
+    	<br/>
     	{% endif %}
     </form>
 </div>
--->
+
+{% if current_user.aanwezig == True %}
+<div class="container" align="center">
+	<div id="pageal">
+	    <div class="video">
+	        <video width="440" height="330" controls autoplay>
+			  <source src="/static/videos/Toon Hermans - Voorzitter Ons Genoegen.mp4" type="video/mp4">
+			  <source src="/static/videos/Toon Hermans - Voorzitter Ons Genoegen.mp4" type="video/ogg">
+			Your browser does not support the video tag.
+			</video>
+	    </div>
+	    <div class="table">
+	       <table class="content-table" border=1>
+			  <thead>
+			    <tr>
+			      <th>Niet aanwezig</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    {% for user in Leden.query.all()%}
+			    	{% if user.aanwezig == False %}
+				      <tr>
+				        <td>{{ user.aanhef + ' ' + user.achternaam }}</td>
+				      </tr>
+			      	{% endif %}
+			    {% endfor %}
+			  </tbody>
+			</table>
+	    </div>
+	    <div class="table">
+	       <table class="content-table" border=1>
+			  <thead>
+			    <tr>
+			      <th>Aanwezig</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    {% for user in Leden.query.all()%}
+			    	{% if user.aanwezig == True %}
+				      <tr>
+				        <td>{{ user.aanhef + ' ' + user.achternaam }}</td>
+				      </tr>
+			      	{% endif %}
+			    {% endfor %}
+			  </tbody>
+			</table>
+	    </div>
+	</div>
+</div>
+{% endif %}
+
 </html>
 
 {% endblock %} 

@@ -1,9 +1,5 @@
-* {
-  font-family: sans-serif; /* Change your font family */
-}
-
 .content-table thead tr {
-  background-color: #009879;
+  background-color: #000000;
   color: #ffffff;
   text-align: center;
   font-weight: bold;
@@ -29,17 +25,4 @@
 .content-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
-}
-
-table.table_on_the_left {
-    position:center;
-    float:left;
-}
-table.table_on_the_right {
-    position:center;
-    float:right;
-}
-#wrap {
-    width: 250px;
-    margin: 0 auto;
 }

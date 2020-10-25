@@ -13,7 +13,7 @@
     </style>
   </head>
     
-        <table class="content-table center">
+        <table class="content-table center" border=1>
   <thead>
     <tr>
       <th>Ledenlijst</th>
@@ -22,7 +22,7 @@
   <tbody>
     {% for user in Leden.query.all()%}
       <tr>
-        <td>{{ user.voornaam + ' ' + user.achternaam }}</td>
+        <td>{{ user.aanhef + ' ' + user.achternaam }}</td>
       </tr>
     {% endfor %}
   </tbody>

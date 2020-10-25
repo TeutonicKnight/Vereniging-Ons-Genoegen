@@ -11,6 +11,7 @@ def load_user(user_id):
 #each class represents one table
 class Leden(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
+	aanhef = db.Column(db.String(10), nullable=False)
 	voornaam = db.Column(db.String(20), nullable=False)
 	achternaam = db.Column(db.String(20), nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=False)

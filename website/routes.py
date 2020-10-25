@@ -39,7 +39,7 @@ def register():
 	form = RegistrationForm()
 	if form.validate_on_submit():
 		hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-		user = Leden(voornaam=form.voornaam.data, achternaam=form.achternaam.data, email=form.email.data, password=hashed_password)
+		user = Leden(aanhef=form.aanhef.data, voornaam=form.voornaam.data, achternaam=form.achternaam.data, email=form.email.data, password=hashed_password)
 		db.session.add(user)
 		db.session.commit()
 		flash(f'Account aangemaakt! U kunt nu inloggen', 'success')

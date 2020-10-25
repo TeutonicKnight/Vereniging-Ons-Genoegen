@@ -7,7 +7,8 @@
 </nav>
 
     <div class="container">
-    <h1>Inloggen</h1>
+      <br/>
+    <h3>Inloggen</h3>
     <br/>
     
     
@@ -17,7 +18,7 @@
   	<form method="POST" action ="">
   		{{ form.hidden_tag() }}
   		<fieldset class="form-group">
-  			<legend class="border-bottom mb-4">Log in met uw wachtwoord en email</legend>
+  			<legend class="border-bottom mb-4"><h6>Log in met uw wachtwoord en email</h6></legend>
   			
   			<div class="form-group">
   				{{ form.email.label(class="form-control-label")}}
@@ -54,22 +55,24 @@
           {{ form.remember.label(class="form-check-label") }}
         </div>
           
-  				
+  		
   		</fieldset>
   		<div class="form-group">
   			{{ form.submit(class="btn btn-outline-info")}}
   		</div>
-
+      <!--
       <small class="text-muted ml-2">
           <a href="#">Wachtwoord vergeten? Klik hier.</a>
         
       </small>
+    -->
   	</form>
-  </div>
-  <div class="border-top pt-3">
+
+  <div class="border-bottom pt-3">
   		<small class="text-muted">
   			Heeft u nog geen account? <a class="ml-2" href="{{ url_for('register') }}"> Registreer hier</a>
   		</small>
   </div>
+    </div>
 
 {% endblock %} 

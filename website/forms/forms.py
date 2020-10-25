@@ -1,19 +1,21 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, RadioField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from website.models.models import Leden
 
 class RegistrationForm(FlaskForm):
+	aanhef = RadioField(choices=[('Mevr.','Mevr.'),('Mr.','Mr.')],
+		validators=[DataRequired(message="Vul aub de aanhef in")])
 	voornaam = StringField('Voornaam', 
-					validators=[DataRequired(), Length(min=2, max=30)])
+					validators=[DataRequired(message="Dit veld mag niet leeg zijn"), Length(min=2, max=30)])
 	achternaam = StringField('Achternaam', 
-					validators=[DataRequired(), Length(min=2, max=30)])
+					validators=[DataRequired(message="Dit veld mag niet leeg zijn"), Length(min=2, max=30)])
 	email = StringField('Email',
-		validators=[DataRequired(), Email()]) 	
+		validators=[DataRequired(message="Dit veld mag niet leeg zijn"), Email(message="Vul een geldig email adres in")]) 	
 	password = PasswordField('Wachtwoord', 
-		validators=[DataRequired()])
+		validators=[DataRequired(message="Dit veld mag niet leeg zijn")])
 	confirm_password = PasswordField('Wachtwoord bevestigen',
-		validators=[DataRequired(), EqualTo('password')])
+		validators=[DataRequired(message="Dit veld mag niet leeg zijn"), EqualTo('password', message="wachtwoorden komen niet overeen")])
 	submit = SubmitField('Registreer')
 
 	def validate_email(self, email):
