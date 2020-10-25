@@ -23,6 +23,16 @@ $ python manage.py db upgrade
 $ python -m pip install gunicorn==20.0.4 | Don't forget
 $ python -m pip freeze > requirements.txt | Don't forget
 
+$ heroku pg:info | Check postgres version
+
+Pushing local db to remote:
+$ export PATH=$PATH:"C:\Program Files\PostgreSQL\12\bin" | Set psql to PATH in order to push local db to remote
+---> Pushing local database to remote: https://stackoverflow.com/questions/15576064/the-local-psql-command-could-not-be-located
+$ heroku pg:reset postgresql-convex-45291 | Even though my remote db was empty, it prompted me with reset.
+  Interesting fact: It seems to re-create constraints and such, so this could be another way to update your remote db,
+  not just a requirement for pushing data.
+$ PGUSER=postgres PGPASSWORD=password heroku push mylocaldb HEROKU_POSTGRESQL_MAGENTA --app sushi | Push local data to remote.
+
 Things learned:
 $ export PYTHONPATH= clears python path which matters for the venv apparantly. Now pip freeze works as intended.
 
@@ -42,14 +52,13 @@ Import module from a directory which is exactly one level above the current dire
 
 To query from your db model: SomeModel.query.all(). Use Model.SomeAttribute to access table columns/rows
 
-Never run your website in debug mode when you are running it for production. The debug mode gives away too much
-info when it catches an error. If someone has the Debug pin he could figure out emails and such.
 
-Procfile syntax: 
 web: gunicorn app:app The first app represents the name of the python file that runs your application or the 
 name of the module it is in. The second app represents the app name that is named in your .py file. 
 Just wanted to add because it helps clarify the contents of the procfile and it's syntax. E.g. your 
-appname would be my_awesome_app in the following code: if __name__ == '__main__': my_awesome_app.run() 
-https://stackoverflow.com/questions/38851564/heroku-gunicorn-procfile
+appname would be my_awesome_app in the following code: if __name__ == '__main__': my_awesome_app.run()
+
+Never run your website in debug mode when you are running it for production. The debug mode gives away too much
+info when it catches an error. If someone has the Debug pin he could figure out emails and such.
  
 Flask-login extension documentation: https://flask-login.readthedocs.io/en/latest/
