@@ -20,6 +20,9 @@ $ python manage.py db init
 $ python manage.py db migrate
 $ python manage.py db upgrade
 
+$ python -m pip install gunicorn==20.0.4 | Don't forget
+$ python -m pip freeze > requirements.txt | Don't forget
+
 Things learned:
 $ export PYTHONPATH= clears python path which matters for the venv apparantly. Now pip freeze works as intended.
 
