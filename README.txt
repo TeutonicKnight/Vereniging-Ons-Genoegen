@@ -35,6 +35,11 @@ $ PGUSER=postgres PGPASSWORD=password heroku push mylocaldb HEROKU_POSTGRESQL_MA
 
 Things learned:
 $ export PYTHONPATH= clears python path which matters for the venv apparantly. Now pip freeze works as intended.
+Maybe it is also helpful to run pip from the venv by specifying the path, i.e. $ virtual/Scripts/pip install
+
+Another time this didn't seem to work, stackoverflow issue: https://stackoverflow.com/questions/9444289/from-virtualenv-pip-freeze-requirements-txt-give-tones-of-garbage-how-to-tri
+also: https://stackoverflow.com/questions/1382925/virtualenv-no-site-packages-and-pip-still-finding-global-packages
+https://stackoverflow.com/questions/7225900/how-to-install-packages-using-pip-according-to-the-requirements-txt-file-from-a
 
 Problem with migration, it didn't find any changes, I added 'from website.models.models import Leden' to the env.py
 file in migrations folder. I also had to comment out all the code that had to do with the login manager in models.py

@@ -1,10 +1,12 @@
 from flask import render_template, flash, url_for, request, redirect
 from website import app, db, bcrypt
+from flask_wtf.csrf import CSRFProtect
 from website.forms.forms import RegistrationForm, LoginForm
 from website.models.models import Leden
 from flask_login import login_user, current_user, logout_user, login_required
 import copy
 
+csrf = CSRFProtect(app)
 
 @app.route('/')
 def index():

@@ -29,6 +29,7 @@
 
 
 <form action="/vergadering" method="POST">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 		{% if current_user.aanwezig == False %}
     	<input type="submit" name="aanmelden" value="aanmelden" class='btn btn-secondary'>
     	{% else %}
@@ -56,12 +57,10 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    {% for user in Leden.query.all()%}
-			    	{% if user.aanwezig == False %}
+			    {% for user in Leden.query.filter_by(aanwezig=false).all() %}
 				      <tr>
 				        <td>{{ user.aanhef + ' ' + user.achternaam }}</td>
 				      </tr>
-			      	{% endif %}
 			    {% endfor %}
 			  </tbody>
 			</table>
@@ -74,12 +73,10 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    {% for user in Leden.query.all()%}
-			    	{% if user.aanwezig == True %}
+			    {% for user in Leden.query.filter_by(aanwezig=true).all() %}
 				      <tr>
 				        <td>{{ user.aanhef + ' ' + user.achternaam }}</td>
 				      </tr>
-			      	{% endif %}
 			    {% endfor %}
 			  </tbody>
 			</table>

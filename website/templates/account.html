@@ -12,9 +12,12 @@
         <p class="text-secondary">{{ current_user.email }}</p>
       </div>
     </div>
+
     <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
       	<input type="submit" name="Account verwijderen" value="Account verwijderen" class='btn btn-secondary'>
       </form>
+
   </div>
 </div>
 
